@@ -13,6 +13,6 @@
 </ul>
 
 <form on:submit|preventDefault={handleSubmit}>
-	<input bind:value={$input} />
+	<input bind:value={$input}  class="text-black"/>
 	<button>Send</button>
 </form>
