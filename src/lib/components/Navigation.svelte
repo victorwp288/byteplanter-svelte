@@ -1,8 +1,8 @@
 <script>
-	import {drawerStore} from '@skeletonlabs/skeleton'
-
+	import { drawerStore } from '@skeletonlabs/skeleton';
+	
 	function drawerClose() {
-		drawerStore.close()
+		drawerStore.close();
 	}
 </script>
 
@@ -12,6 +12,5 @@
 		<li><a href="/?test=1" on:click={drawerClose}>Other Page 1</a></li>
 		<li><a href="/?test=2" on:click={drawerClose}>Other Page 1</a></li>
 		<li><a href="/?test=3" on:click={drawerClose}>Other Page 1</a></li>
-
 	</ul>
 </nav>

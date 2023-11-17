@@ -12,8 +12,12 @@
 
 	inject({ mode: dev ? 'development' : 'production' });
 
+	import { initializeStores } from '@skeletonlabs/skeleton';
+
+	initializeStores();
+
 	function drawerOpen() {
-		drawerStore.Open();
+		drawerStore.open();
 	}
 </script>
 
@@ -37,7 +41,7 @@
 				<strong class="text-xl uppercase">Noted</strong>
 			</svelte:fragment>
 			<svelte:fragment slot="trail">
-				<Avatar initials="JD" width="10" background="bg-primary-500" />
+				<Avatar initials="JD" width="w-10" background="bg-primary-500" />
 			</svelte:fragment>
 		</AppBar>
 	</svelte:fragment>
