@@ -1,6 +1,7 @@
 <script>
 	import { getDrawerStore } from '@skeletonlabs/skeleton';
 
+	const drawerStore = getDrawerStore();
 	function drawerClose() {
 		drawerStore.close();
 	}
