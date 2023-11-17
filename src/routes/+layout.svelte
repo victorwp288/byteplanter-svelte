@@ -3,7 +3,7 @@
 	import { dev } from '$app/environment';
 	import { inject } from '@vercel/analytics';
 
-	import { AppShell, AppBar, Avatar, Drawer, drawerStore } from '@skeletonlabs/skeleton';
+	import { AppShell, AppBar, Avatar, Drawer, getDrawerStore } from '@skeletonlabs/skeleton';
 	import Navigation from '$lib/components/Navigation.svelte';
 	// Floating UI for Popups
 	import { computePosition, autoUpdate, flip, shift, offset, arrow } from '@floating-ui/dom';
@@ -15,6 +15,7 @@
 	import { initializeStores } from '@skeletonlabs/skeleton';
 
 	initializeStores();
+	const drawerStore = getDrawerStore();
 
 	function drawerOpen() {
 		drawerStore.open();
