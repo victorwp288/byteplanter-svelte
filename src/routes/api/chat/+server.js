@@ -15,7 +15,20 @@ export const POST = async ({ request }) => {
 		messages
 	});
 
-	const stream = OpenAIStream(response);
+	const stream = OpenAIStream(response, {
+		onStart: () => {
+			console.log('Started');
+		},
+		onToken: (token) => {
+			console.log('Token:', token);
+		},
+		onMessage: (message) => {
+			console.log('Message:', message);
+		},
+		onCompletion: (completion) => {
+			console.log('Completion:', completion);
+		},
+	});
 
 	return new StreamingTextResponse(stream);
 };
