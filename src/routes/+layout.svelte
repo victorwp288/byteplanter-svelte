@@ -43,9 +43,9 @@
 			</svelte:fragment>
 			<svelte:fragment slot="trail">
 				<button>
-					<p>
+					<a href="/login">
 						login
-					</p>
+					</a>
 				</button>
 				<!--<Avatar initials="JD" width="w-10" background="bg-primary-500" /> */}-->
 			</svelte:fragment>
