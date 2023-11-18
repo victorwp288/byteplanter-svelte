@@ -4,6 +4,10 @@ import { getFirestore } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
 import { getStorage } from 'firebase/storage';
 import { getAnalytics } from 'firebase/analytics';
+import { isSupported } from 'firebase/analytics';
+import { onAuthStateChanged } from 'firebase/auth';
+import { writable } from 'svelte/store';
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -24,4 +28,38 @@ export const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 export const auth = getAuth(app);
 export const storage = getStorage(app);
-export const analytics = getAnalytics(app);
+export let analytics;
+
+isSupported().then((isSupported) => {
+	if (isSupported) {
+		analytics = getAnalytics(app);
+	} else {
+		console.log('Firebase Analytics is not supported in this environment');
+	}
+});
+
+function userStore() {
+	let unsubscribe;
+
+	if (!auth) {
+		console.warn('Auth is not initialized or not in browser');
+		const { subscribe } = writable(null);
+		return {
+			subscribe
+		};
+	}
+
+	const { subscribe } = writable(auth?.currentUser ?? null, (set) => {
+		unsubscribe = onAuthStateChanged(auth, (user) => {
+			set(user);
+		});
+
+		return () => unsubscribe();
+	});
+
+	return {
+		subscribe
+	};
+}
+
+export const user = userStore();

@@ -42,7 +42,12 @@
 				<strong class="text-xl uppercase">Noted</strong>
 			</svelte:fragment>
 			<svelte:fragment slot="trail">
-				<Avatar initials="JD" width="w-10" background="bg-primary-500" />
+				<button>
+					<p>
+						login
+					</p>
+				</button>
+				<!--<Avatar initials="JD" width="w-10" background="bg-primary-500" /> */}-->
 			</svelte:fragment>
 		</AppBar>
 	</svelte:fragment>
