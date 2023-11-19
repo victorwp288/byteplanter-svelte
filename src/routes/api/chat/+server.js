@@ -7,27 +7,28 @@ const openai = new OpenAI({
 });
 
 export const POST = async ({ request }) => {
-	const { messages } = await request.json();
+	const { message } = await request.json();
 
 	const response = await openai.chat.completions.create({
+		messages: [{"role": "system", "content": "Your job is to only output mysql queries, with fake but real sounding data"}],
 		model: 'gpt-4-1106-preview',
 		stream: true,
-		messages
+		message
 	});
 
 	const stream = OpenAIStream(response, {
 		onStart: () => {
 			console.log('Started');
 		},
-		onToken: (token) => {
-			console.log('Token:', token);
+		onToken: () => {
+			console.log('Token:');
 		},
 		onMessage: (message) => {
 			console.log('Message:', message);
 		},
 		onCompletion: (completion) => {
 			console.log('Completion:', completion);
-		},
+		}
 	});
 
 	return new StreamingTextResponse(stream);
