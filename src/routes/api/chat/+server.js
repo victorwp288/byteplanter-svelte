@@ -1,8 +1,12 @@
 import OpenAI from 'openai';
 import { OpenAIStream, StreamingTextResponse } from 'ai';
 import { OPENAI_KEY } from '$env/static/private';
+import { getFirestore, collection, addDoc } from 'firebase/firestore';
+import { getAuth } from 'firebase/auth';
+import { app } from '$lib/firebase';
 
-
+const auth = getAuth(app);
+const db = getFirestore(app);
 const openai = new OpenAI({
 	apiKey: OPENAI_KEY
 });
@@ -11,7 +15,13 @@ export const POST = async ({ request }) => {
 	const { message } = await request.json();
 
 	const response = await openai.chat.completions.create({
-		messages: [{"role": "system", "content": "Your job is to only output mysql queries, with fake but real sounding data"}],
+		messages: [
+			{
+				role: 'system',
+				content:
+					'output only short javascript snippets, but take in mind the next message and abide by the user'
+			}
+		],
 		model: 'gpt-4-1106-preview',
 		stream: true,
 		message
@@ -21,14 +31,16 @@ export const POST = async ({ request }) => {
 		onStart: () => {
 			console.log('Started');
 		},
-		onToken: () => {
-			console.log('Token:');
-		},
-		onMessage: (message) => {
-			console.log('Message:', message);
-		},
-		onCompletion: (completion) => {
-			console.log('Completion:', completion);
+		onCompletion: async (completion) => {
+			try {
+				const docRef = await addDoc(collection(db, 'chats'), {
+					chat: completion,
+					time: new Date().toISOString()
+				});
+				console.log('Document written with ID: ', docRef.id);
+			} catch (e) {
+				console.error('Error adding document: ', e);
+			}
 		}
 	});
 

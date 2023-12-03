@@ -1,18 +1,21 @@
 <script>
-	import {useChat} from "ai/svelte";
+	import { useChat } from 'ai/svelte';
+	import AuthCheck from '$lib/components/AuthCheck.svelte';
+	import Markdown from 'svelte-markdown';
 
-	const {messages, handleSubmit, input} = useChat();
+	const { messages, handleSubmit, input } = useChat();
 </script>
 
+<AuthCheck>
+	<h1>Ask our ai below</h1>
+	<ul>
+		{#each $messages as message}
+			<li>{message.role} says... <Markdown source={message.content} /></li>
+		{/each}
+	</ul>
 
-<h1>Ask our ai below</h1>
-<ul>
-	{#each $messages as message}
-		<li>{message.role} says... {message.content}</li>
-	{/each}
-</ul>
-
-<form on:submit|preventDefault={handleSubmit}>
-	<input bind:value={$input}  class="text-black"/>
-	<button>Send</button>
-</form>
+	<form on:submit|preventDefault={handleSubmit}>
+		<input bind:value={$input} class="text-black" />
+		<button>Send</button>
+	</form>
+</AuthCheck>

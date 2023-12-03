@@ -1,4 +1,6 @@
-import OpenAI from 'openai';
+//TODO: implement this
+
+/*import OpenAI from 'openai';
 import { OPENAI_KEY } from '$env/static/private';
 
 const openai = new OpenAI({
@@ -23,4 +25,4 @@ export const POST = async ({ request }) => {
 	const messages = await openai.beta.threads.messages.list(thread.id);
 
 	
-};
+};*/
