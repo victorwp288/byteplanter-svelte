@@ -3,7 +3,7 @@ import { getFirestore } from 'firebase-admin/firestore';
 import { FB_CLIENT_EMAIL, FB_PRIVATE_KEY, FB_PROJECT_ID } from '$env/static/private';
 import pkg from 'firebase-admin';
 import firebase from 'firebase-admin';
-import serviceAccount from './service-account.json';
+//import serviceAccount from './service-account.json';
 
 const getGCPCredentials = () => {
 	return process.env.GCP_PRIVATE_KEY
