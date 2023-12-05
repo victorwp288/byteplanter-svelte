@@ -3,6 +3,7 @@
 	import { dev } from '$app/environment';
 	import { inject } from '@vercel/analytics';
 
+	import Footer from '$lib/components/Footer.svelte';
 	import { AppShell, AppBar, Avatar, Drawer, getDrawerStore } from '@skeletonlabs/skeleton';
 	import Navigation from '$lib/components/Navigation.svelte';
 	// Floating UI for Popups
@@ -43,9 +44,7 @@
 			</svelte:fragment>
 			<svelte:fragment slot="trail">
 				<button>
-					<a href="/login">
-						login
-					</a>
+					<a href="/login"> login </a>
 				</button>
 				<!--<Avatar initials="JD" width="w-10" background="bg-primary-500" /> */}-->
 			</svelte:fragment>
@@ -54,13 +53,11 @@
 	<svelte:fragment slot="sidebarLeft">
 		<Navigation />
 	</svelte:fragment>
-	<svelte:fragment slot="sidebarRight">Sidebar Right</svelte:fragment>
 	<svelte:fragment slot="pageHeader">Page Header</svelte:fragment>
 	<!-- Router Slot -->
 	<div class="container p-10 mx-auto">
 		<slot />
 	</div>
 	<!-- ---- / ---- -->
-	<svelte:fragment slot="pageFooter">Page Footer</svelte:fragment>
-	<svelte:fragment slot="footer">Footer</svelte:fragment>
+	<svelte:fragment slot="pageFooter"><Footer/></svelte:fragment>
 </AppShell>

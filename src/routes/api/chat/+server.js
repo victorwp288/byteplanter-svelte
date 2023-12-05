@@ -4,6 +4,7 @@ import { OPENAI_KEY } from '$env/static/private';
 import { getFirestore, collection, addDoc } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
 import { app } from '$lib/firebase';
+import { adminAuth } from '$lib/server/admin';
 
 const auth = getAuth(app);
 const db = getFirestore(app);
@@ -13,6 +14,8 @@ const openai = new OpenAI({
 
 export const POST = async ({ request }) => {
 	const { message } = await request.json();
+
+
 
 	const response = await openai.chat.completions.create({
 		messages: [
@@ -35,7 +38,8 @@ export const POST = async ({ request }) => {
 			try {
 				const docRef = await addDoc(collection(db, 'chats'), {
 					chat: completion,
-					time: new Date().toISOString()
+					time: new Date().toISOString(),
+					name: adminAuth.currentUser?.displayName ?? 'Anonymous'
 				});
 				console.log('Document written with ID: ', docRef.id);
 			} catch (e) {

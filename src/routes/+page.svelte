@@ -4,6 +4,9 @@
 	import Markdown from 'svelte-markdown';
 
 	const { messages, handleSubmit, input } = useChat();
+
+
+	
 </script>
 
 <AuthCheck>
