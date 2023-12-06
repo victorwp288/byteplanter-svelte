@@ -19,7 +19,7 @@
     });
   }
 
-  async function signOutSSR() {
+  export async function signOutSSR() {
     const res = await fetch("/api/signin", { method: "DELETE" });
     await signOut(auth);
   }

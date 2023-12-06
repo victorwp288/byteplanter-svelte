@@ -14,6 +14,19 @@
 	inject({ mode: dev ? 'development' : 'production' });
 
 	import { initializeStores } from '@skeletonlabs/skeleton';
+	import { user } from '$lib/firebase';
+	let initials = '';
+
+	$: {
+		if ($user) {
+			if ($user.name) {
+				let names = $user.name.split(' ');
+				initials = names.map((name) => name[0]).join('');
+			} else if ($user.email) {
+				initials = $user.email[0];
+			}
+		}
+	}
 
 	initializeStores();
 	const drawerStore = getDrawerStore();
@@ -43,10 +56,15 @@
 				<strong class="text-xl uppercase">Noted</strong>
 			</svelte:fragment>
 			<svelte:fragment slot="trail">
-				<button>
-					<a href="/login"> login </a>
-				</button>
-				<!--<Avatar initials="JD" width="w-10" background="bg-primary-500" /> */}-->
+				{#if $user}
+					<a href="/login">
+						<Avatar {initials} width="w-10" background="bg-primary-500" />
+					</a>
+				{:else}
+					<button>
+						<a href="/login"> login </a>
+					</button>
+				{/if}
 			</svelte:fragment>
 		</AppBar>
 	</svelte:fragment>
@@ -59,5 +77,5 @@
 		<slot />
 	</div>
 	<!-- ---- / ---- -->
-	<svelte:fragment slot="pageFooter"><Footer/></svelte:fragment>
+	<svelte:fragment slot="pageFooter"><Footer /></svelte:fragment>
 </AppShell>

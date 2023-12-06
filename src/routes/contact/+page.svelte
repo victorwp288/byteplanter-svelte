@@ -26,7 +26,7 @@
 								/>
 							</svg>
 						</dt>
-						<dd>545 Mavis Island<br />Chicago, IL 99191</dd>
+						<dd>KEA<br />Copenhagen</dd>
 					</div>
 					<div class="flex gap-x-4">
 						<dt class="flex-none">
@@ -47,7 +47,7 @@
 							</svg>
 						</dt>
 						<dd>
-							<a class="hover:text-gray-900" href="tel:+1 (555) 234-5678">+1 (555) 234-5678</a>
+							<a class="hover:text-gray-900" href="tel:+45 29809690">+45 29 80 96 90</a>
 						</dd>
 					</div>
 					<div class="flex gap-x-4">
@@ -69,7 +69,7 @@
 							</svg>
 						</dt>
 						<dd>
-							<a class="hover:text-gray-900" href="mailto:hello@example.com">hello@example.com</a>
+							<a class="hover:text-gray-900" href="mailto:victorwpetersen@gmail.com">victorwpetersen@gmail.com</a>
 						</dd>
 					</div>
 				</dl>
