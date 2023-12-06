@@ -2,12 +2,14 @@
 	<div class="mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-2">
 		<div class="relative px-6 pb-20 pt-24 sm:pt-32 lg:static lg:px-8 lg:py-48">
 			<div class="mx-auto max-w-xl lg:mx-0 lg:max-w-lg">
-				<h2 class="text-3xl font-bold tracking-tight text-gray-900">Get in touch</h2>
-				<p class="mt-6 text-lg leading-8 text-gray-600">
-					Proin volutpat consequat porttitor cras nullam gravida at. Orci molestie a eu arcu. Sed ut
-					tincidunt integer elementum id sem. Arcu sed malesuada et magna.
+				<h2 class="text-3xl font-bold tracking-tight text-white">Get in touch</h2>
+				<p class="mt-6 text-lg leading-8 text-gray-300">
+					Interested in learning more about BytePlanter, my bachelor's project at KEA? Whether
+					you're a fellow student, an academic, or someone passionate about web development, I'm
+					eager to engage in discussions and collaborations. Feel free to reach out to me with
+					questions, suggestions, or insights related to the project. Contact me!
 				</p>
-				<dl class="mt-10 space-y-4 text-base leading-7 text-gray-600">
+				<dl class="mt-10 space-y-4 text-base leading-7 text-gray-300">
 					<div class="flex gap-x-4">
 						<dt class="flex-none">
 							<span class="sr-only">Address</span>
@@ -69,7 +71,9 @@
 							</svg>
 						</dt>
 						<dd>
-							<a class="hover:text-gray-900" href="mailto:victorwpetersen@gmail.com">victorwpetersen@gmail.com</a>
+							<a class="hover:text-gray-900" href="mailto:victorwpetersen@gmail.com"
+								>victorwpetersen@gmail.com</a
+							>
 						</dd>
 					</div>
 				</dl>
@@ -79,7 +83,7 @@
 			<div class="mx-auto max-w-xl lg:mr-0 lg:max-w-lg">
 				<div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
 					<div>
-						<label for="first-name" class="block text-sm font-semibold leading-6 text-gray-900"
+						<label for="first-name" class="block text-sm font-semibold leading-6 text-gray-300"
 							>First name</label
 						>
 						<div class="mt-2.5">
@@ -93,7 +97,7 @@
 						</div>
 					</div>
 					<div>
-						<label for="last-name" class="block text-sm font-semibold leading-6 text-gray-900"
+						<label for="last-name" class="block text-sm font-semibold leading-6 text-gray-300"
 							>Last name</label
 						>
 						<div class="mt-2.5">
@@ -107,7 +111,7 @@
 						</div>
 					</div>
 					<div class="sm:col-span-2">
-						<label for="email" class="block text-sm font-semibold leading-6 text-gray-900"
+						<label for="email" class="block text-sm font-semibold leading-6 text-gray-300"
 							>Email</label
 						>
 						<div class="mt-2.5">
@@ -121,7 +125,7 @@
 						</div>
 					</div>
 					<div class="sm:col-span-2">
-						<label for="phone-number" class="block text-sm font-semibold leading-6 text-gray-900"
+						<label for="phone-number" class="block text-sm font-semibold leading-6 text-gray-300"
 							>Phone number</label
 						>
 						<div class="mt-2.5">
@@ -135,7 +139,7 @@
 						</div>
 					</div>
 					<div class="sm:col-span-2">
-						<label for="message" class="block text-sm font-semibold leading-6 text-gray-900"
+						<label for="message" class="block text-sm font-semibold leading-6 text-gray-300"
 							>Message</label
 						>
 						<div class="mt-2.5">
