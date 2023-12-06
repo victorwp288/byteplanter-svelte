@@ -29,7 +29,7 @@
 							Who are the person behind this project?
 						</dt>
 						<dd class="pb-6 mt-2 text-base leading-7 text-gray-300">
-							My name is Victor, and I am a software developer from Denmark. I am currently studying
+							My name is Victor, and I am a web developer from Denmark. I am currently studying
 							web development at KEA in Copenhagen.
 						</dd>
 						<dt class="text-base font-semibold leading-7 text-white">
