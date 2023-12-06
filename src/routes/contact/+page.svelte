@@ -1,3 +1,7 @@
+<svelte:head>
+  <title>Contact</title>
+  <meta name="description" content="Contact us">
+</svelte:head>
 <div class="relative isolate">
 	<div class="mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-2">
 		<div class="relative px-6 pb-20 pt-24 sm:pt-32 lg:static lg:px-8 lg:py-48">

@@ -8,7 +8,10 @@
 
 	
 </script>
-
+<svelte:head>
+  <title>Home</title>
+  <meta name="description" content="Seed your database">
+</svelte:head>
 <AuthCheck>
 	<h1>Ask our ai below</h1>
 	<ul>

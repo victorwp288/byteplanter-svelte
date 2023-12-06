@@ -14,7 +14,10 @@
         }
     }
 </script>
-
+<svelte:head>
+  <title>Sign Up</title>
+  <meta name="description" content="Sign Up">
+</svelte:head>
 <h2>Register</h2>
 
 <div>

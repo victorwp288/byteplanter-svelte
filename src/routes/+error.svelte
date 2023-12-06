@@ -1,3 +1,7 @@
+<svelte:head>
+  <title>Missing page</title>
+  <meta name="description" content="We couldn’t find the page">
+</svelte:head>
 <div
 	class="grid min-h-full grid-cols-1 grid-rows-[1fr,auto,1fr] bg-white lg:grid-cols-[max(50%,36rem),1fr]"
 >

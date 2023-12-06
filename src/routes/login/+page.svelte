@@ -27,7 +27,10 @@
 
 
 
-
+<svelte:head>
+  <title>Login</title>
+  <meta name="description" content="Login to Byteplanter">
+</svelte:head>
 
 <h2>Login</h2>
 
