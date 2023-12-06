@@ -19,9 +19,9 @@
 
 	$: {
 		if ($user) {
-			if ($user.name) {
-				let names = $user.name.split(' ');
-				initials = names.map((name) => name[0]).join('');
+			if ($user.displayName) {
+				let names = $user.displayName.split(' ');
+				initials = names[0][0] + (names.length > 1 ? names[names.length - 1][0] : '');
 			} else if ($user.email) {
 				initials = $user.email[0];
 			}
