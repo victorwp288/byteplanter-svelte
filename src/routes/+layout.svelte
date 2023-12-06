@@ -53,7 +53,7 @@
 						</svg>
 					</span>
 				</button>
-				<strong class="text-xl uppercase">Noted</strong>
+				<strong class="text-xl uppercase">Byteplanter</strong>
 			</svelte:fragment>
 			<svelte:fragment slot="trail">
 				{#if $user}
@@ -71,7 +71,6 @@
 	<svelte:fragment slot="sidebarLeft">
 		<Navigation />
 	</svelte:fragment>
-	<svelte:fragment slot="pageHeader">Page Header</svelte:fragment>
 	<!-- Router Slot -->
 	<div class="container p-10 mx-auto">
 		<slot />
