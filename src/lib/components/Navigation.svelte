@@ -1,6 +1,7 @@
 <script>
 	import { getDrawerStore } from '@skeletonlabs/skeleton';
 	import { page } from '$app/stores';
+	import { user } from '$lib/firebase';
 
 	const drawerStore = getDrawerStore();
 
@@ -92,5 +93,26 @@
 				<span class="flex-auto">FAQ</span>
 			</a>
 		</li>
+		{#if $user}
+			<li>
+				<a href="/history" class={classesActive('/history')} on:click={drawerClose}>
+					<span class="badge bg-primary-500"
+						><svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="20"
+							height="20"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="#000000"
+							stroke-width="1"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg
+						></span
+					>
+					<span class="flex-auto">History</span>
+				</a>
+			</li>
+		{/if}
 	</ul>
 </nav>

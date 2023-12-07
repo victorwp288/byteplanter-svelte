@@ -4,7 +4,7 @@
 </svelte:head>
 <div class="relative isolate">
 	<div class="mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-2">
-		<div class="relative px-6 pb-20 pt-24 sm:pt-32 lg:static lg:px-8 lg:py-48">
+		<div class="relative px-6 pb-20 pt-24 sm:pt-32 lg:static lg:px-8 lg:py-6">
 			<div class="mx-auto max-w-xl lg:mx-0 lg:max-w-lg">
 				<h2 class="text-3xl font-bold tracking-tight text-white">Get in touch</h2>
 				<p class="mt-6 text-lg leading-8 text-gray-300">
@@ -83,7 +83,7 @@
 				</dl>
 			</div>
 		</div>
-		<form action="#" method="POST" class="px-6 pb-24 pt-20 sm:pb-32 lg:px-8 lg:py-48">
+		<form action="#" method="POST" class="px-6 pb-24 pt-20 sm:pb-32 lg:px-8 lg:pb-2">
 			<div class="mx-auto max-w-xl lg:mr-0 lg:max-w-lg">
 				<div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
 					<div>
@@ -97,6 +97,7 @@
 								id="first-name"
 								autocomplete="given-name"
 								class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+								required
 							/>
 						</div>
 					</div>
@@ -111,6 +112,22 @@
 								id="last-name"
 								autocomplete="family-name"
 								class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+								required
+							/>
+						</div>
+					</div>
+					<div class="sm:col-span-2">
+						<label for="subject" class="block text-sm font-semibold leading-6 text-gray-300"
+							>Subject</label
+						>
+						<div class="mt-2.5">
+							<input
+								type="text"
+								name="subject"
+								id="subject"
+								autocomplete="off"
+								class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+								required
 							/>
 						</div>
 					</div>
@@ -125,6 +142,7 @@
 								id="email"
 								autocomplete="email"
 								class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+								required
 							/>
 						</div>
 					</div>
@@ -152,6 +170,7 @@
 								id="message"
 								rows="4"
 								class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+								required
 							/>
 						</div>
 					</div>
