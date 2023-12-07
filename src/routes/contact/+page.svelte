@@ -1,6 +1,45 @@
+<script>
+	import { Toast, getToastStore } from '@skeletonlabs/skeleton';
+	const toastStore = getToastStore();
+
+	let firstName, lastName, phoneNumber, subject, email, message;
+
+	async function handleSubmit() {
+		const response = await fetch('/api/send-mail', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({ firstName, lastName, phoneNumber, subject, email, message })
+		});
+
+		if (response.ok) {
+			const successToast = {
+				message: 'Email sent successfully!'
+				// additional settings like timeout, autohide, etc.
+			};
+			toastStore.trigger(successToast);
+
+			// Clear the input fields
+			firstName = '';
+			lastName = '';
+			phoneNumber = '';
+			subject = '';
+			email = '';
+			message = '';
+		} else {
+			const errorToast = {
+				message: 'Failed to send email. Please try again.'
+				// additional settings
+			};
+			toastStore.trigger(errorToast);
+		}
+	}
+</script>
+
 <svelte:head>
-  <title>Contact</title>
-  <meta name="description" content="Contact us">
+	<title>Contact</title>
+	<meta name="description" content="Contact us" />
 </svelte:head>
 <div class="relative isolate">
 	<div class="mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-2">
@@ -83,7 +122,7 @@
 				</dl>
 			</div>
 		</div>
-		<form action="#" method="POST" class="px-6 pb-24 pt-20 sm:pb-32 lg:px-8 lg:pb-2">
+		<form on:submit|preventDefault={handleSubmit} class="px-6 pb-24 pt-20 sm:pb-32 lg:px-8 lg:pb-2">
 			<div class="mx-auto max-w-xl lg:mr-0 lg:max-w-lg">
 				<div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
 					<div>
@@ -92,6 +131,7 @@
 						>
 						<div class="mt-2.5">
 							<input
+								bind:value={firstName}
 								type="text"
 								name="first-name"
 								id="first-name"
@@ -107,6 +147,7 @@
 						>
 						<div class="mt-2.5">
 							<input
+								bind:value={lastName}
 								type="text"
 								name="last-name"
 								id="last-name"
@@ -122,6 +163,7 @@
 						>
 						<div class="mt-2.5">
 							<input
+								bind:value={subject}
 								type="text"
 								name="subject"
 								id="subject"
@@ -137,6 +179,7 @@
 						>
 						<div class="mt-2.5">
 							<input
+								bind:value={email}
 								type="email"
 								name="email"
 								id="email"
@@ -152,6 +195,7 @@
 						>
 						<div class="mt-2.5">
 							<input
+								bind:value={phoneNumber}
 								type="tel"
 								name="phone-number"
 								id="phone-number"
@@ -166,6 +210,7 @@
 						>
 						<div class="mt-2.5">
 							<textarea
+								bind:value={message}
 								name="message"
 								id="message"
 								rows="4"

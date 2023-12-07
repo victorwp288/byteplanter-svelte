@@ -2,6 +2,7 @@
 	import '../app.postcss';
 	import { dev } from '$app/environment';
 	import { inject } from '@vercel/analytics';
+	import { Toast, getToastStore } from '@skeletonlabs/skeleton';
 
 	import Footer from '$lib/components/Footer.svelte';
 	import { AppShell, AppBar, Avatar, Drawer, getDrawerStore } from '@skeletonlabs/skeleton';
@@ -39,7 +40,7 @@
 <Drawer>
 	<Navigation />
 </Drawer>
-
+<Toast />
 <AppShell slotSidebarLeft="w-0 md:w-52 bg-surface-500/10">
 	<svelte:fragment slot="header">
 		<AppBar>

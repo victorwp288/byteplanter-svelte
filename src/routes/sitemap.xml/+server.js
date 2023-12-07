@@ -3,7 +3,7 @@
 export async function GET() {
 	// Here, we'll just use a static list of URLs for demonstration.
 	// In a real application, you might fetch these from a database or other source.
-	const urls = ['/', '/contact', '/faq', '/signup', '/login'];
+	const urls = ['/', '/contact', '/faq', '/signup', '/login', '/history'];
 
 	const urlElements = urls
 		.map((url) => {

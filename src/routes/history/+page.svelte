@@ -21,7 +21,10 @@
 		console.log("doc data:", documentData);
 	});
 </script>
-
+<svelte:head>
+  <title>History</title>
+  <meta name="description" content="Log of chats">
+</svelte:head>
 <AuthCheck>
 	{#if documentData}
 		<div>
