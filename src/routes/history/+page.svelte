@@ -1,36 +1,42 @@
 <script>
-	import AuthCheck from '$lib/components/AuthCheck.svelte';
-	import { app } from '$lib/firebase.js';
-	import { getFirestore, doc, getDoc } from 'firebase/firestore';
-	import { onMount } from 'svelte';
+    import AuthCheck from '$lib/components/AuthCheck.svelte';
+    import { app } from '$lib/firebase.js';
+    import { getFirestore, collection, query, where, getDocs } from 'firebase/firestore';
+    import { onMount } from 'svelte';
+    import { user } from '$lib/firebase';
 
-	const db = getFirestore(app);
+    const db = getFirestore(app);
 
-	let documentData = null;
+    let documentsData = [];
 
-	onMount(async () => {
-		const docRef = doc(db, 'chats', '4JlXL1BUpye2xTqeC8NE');
-		const docSnap = await getDoc(docRef);
-		console.log(docSnap.exists() ? 'Document data:' : 'No such document!');
-		if (docSnap.exists()) {
-			documentData = docSnap.data();
-			console.log('Document data:', docSnap.data());
-		} else {
-			console.log('No such document!');
-		}
-		console.log("doc data:", documentData);
-	});
+    onMount(async () => {
+        if ($user) {
+            console.log('uid', $user.uid);
+            console.log('displayName', $user.displayName);
+            const q = query(collection(db, 'chats'), where('uid', '==', $user.uid));
+            const querySnapshot = await getDocs(q);
+            querySnapshot.forEach((doc) => {
+                console.log(doc.id, ' => ', doc.data());
+                documentsData = [...documentsData, doc.data()]; // This line is changed
+            });
+            console.log('documents data:', documentsData);
+        }
+    });
 </script>
+
 <svelte:head>
-  <title>History</title>
-  <meta name="description" content="Log of chats">
+    <title>History</title>
+    <meta name="description" content="Log of chats" />
 </svelte:head>
 <AuthCheck>
-	{#if documentData}
-		<div>
-			<h1>{documentData.message}</h1>
-		</div>
-	{:else}
-		<div>Loading...</div>
-	{/if}
+    {#if documentsData.length}
+        {#each documentsData as documentData}
+            <div>
+                <h1>{documentData.chat}</h1>
+				<br/>
+            </div>
+        {/each}
+    {:else}
+        <div>Loading...</div>
+    {/if}
 </AuthCheck>

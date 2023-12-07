@@ -60,7 +60,7 @@
 						xmlns:xlink="http://www.w3.org/1999/xlink"
 						version="1.1"
 						width="20"
-						height="2+"
+						height="20"
 						viewBox="0 0 256 256"
 						xml:space="preserve"
 					>

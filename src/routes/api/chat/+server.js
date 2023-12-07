@@ -10,8 +10,12 @@ const openai = new OpenAI({
 	apiKey: OPENAI_KEY
 });
 
-export const POST = async ({ request }) => {
+export const POST = async ({ request, cookies }) => {
 	const { message } = await request.json();
+
+	const sessionCookie = cookies.get('__session');
+
+	const decodedClaims = await adminAuth.verifySessionCookie(sessionCookie);
 
 	const response = await openai.chat.completions.create({
 		messages: [
@@ -35,7 +39,8 @@ export const POST = async ({ request }) => {
 				const docRef = await addDoc(collection(db, 'chats'), {
 					chat: completion,
 					time: new Date().toISOString(),
-					name: adminAuth.currentUser?.displayName ?? 'Anonymous'
+					name: decodedClaims.name ?? 'Anonymous',
+					uid: decodedClaims.uid ?? 'Anonymous'
 				});
 				console.log('Document written with ID: ', docRef.id);
 			} catch (e) {
