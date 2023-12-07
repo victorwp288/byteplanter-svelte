@@ -2,11 +2,9 @@ import OpenAI from 'openai';
 import { OpenAIStream, StreamingTextResponse } from 'ai';
 import { OPENAI_KEY } from '$env/static/private';
 import { getFirestore, collection, addDoc } from 'firebase/firestore';
-import { getAuth } from 'firebase/auth';
 import { app } from '$lib/firebase';
 import { adminAuth } from '$lib/server/admin';
 
-const auth = getAuth(app);
 const db = getFirestore(app);
 const openai = new OpenAI({
 	apiKey: OPENAI_KEY
@@ -14,8 +12,6 @@ const openai = new OpenAI({
 
 export const POST = async ({ request }) => {
 	const { message } = await request.json();
-
-
 
 	const response = await openai.chat.completions.create({
 		messages: [
