@@ -3,6 +3,7 @@
 	import { dev } from '$app/environment';
 	import { inject } from '@vercel/analytics';
 	import { Toast, getToastStore } from '@skeletonlabs/skeleton';
+	import { injectSpeedInsights } from '@vercel/speed-insights/sveltekit';
 
 	import Footer from '$lib/components/Footer.svelte';
 	import { AppShell, AppBar, Avatar, Drawer, getDrawerStore } from '@skeletonlabs/skeleton';
@@ -13,6 +14,7 @@
 	storePopup.set({ computePosition, autoUpdate, flip, shift, offset, arrow });
 
 	inject({ mode: dev ? 'development' : 'production' });
+	injectSpeedInsights();
 
 	import { initializeStores } from '@skeletonlabs/skeleton';
 	import { user } from '$lib/firebase';
