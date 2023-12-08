@@ -21,7 +21,7 @@
 <h2>Register</h2>
 
 <div>
-    <input type="email" bind:value={email} placeholder="Email" />
-    <input type="password" bind:value={password} placeholder="Password" />
+    <input class="text-black" type="email" bind:value={email} placeholder="Email" />
+    <input class="text-black" type="password" bind:value={password} placeholder="Password" />
     <button class="btn btn-primary" on:click={register}>Register</button>
 </div>

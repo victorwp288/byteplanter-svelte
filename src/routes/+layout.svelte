@@ -65,6 +65,9 @@
 					<button>
 						<a href="/login"> login </a>
 					</button>
+					<button>
+						<a href="/signup"> signup </a>
+					</button>
 				{/if}
 			</svelte:fragment>
 		</AppBar>
