@@ -22,7 +22,7 @@ export const POST = async ({ request, cookies }) => {
 			{
 				role: 'system',
 				content:
-					'output only short javascript snippets, but take in mind the next message and abide by the user'
+					'Give mysql data that is fake but sounds real. For example, if I ask for a list of users, give me a list of users that sounds real but is fake.'
 			}
 		],
 		model: 'gpt-4-1106-preview',

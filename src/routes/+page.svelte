@@ -6,11 +6,11 @@
 	import { writable } from 'svelte/store';
 	import { get } from 'svelte/store';
 	import { onMount } from 'svelte';
+	import { user } from '$lib/firebase';
 
 	const idToken = writable(''); // Initialize the writable store
 
 	// When the component mounts, set up an observer for auth changes
-	
 
 	const { messages, handleSubmit, input } = useChat();
 </script>
@@ -19,16 +19,26 @@
 	<title>Home</title>
 	<meta name="description" content="Seed your database" />
 </svelte:head>
-<AuthCheck>
+{#if !$user}
+	<h1>Welcome to Byteplanter</h1>
+	<h2>The ultimate way to seed your database</h2>
+	<h3>If your confused about how to get started, check the FAQ!</h3>
+	<p>Sign in to get started</p>
+{:else}
 	<h1>Ask our ai below</h1>
 	<ul>
 		{#each $messages as message}
 			<li>{message.role} says... <Markdown source={message.content} /></li>
 		{/each}
 	</ul>
-
-	<form on:submit|preventDefault={handleSubmit}>
-		<input bind:value={$input} class="text-black" />
-		<button>Send</button>
-	</form>
-</AuthCheck>
+	<div class="">
+		<form
+			on:submit|preventDefault={handleSubmit}
+			class=""
+		>
+			<input bind:value={$input} class="text-black rounded-xl" />
+			<button>Send</button
+			>
+		</form>
+	</div>
+{/if}

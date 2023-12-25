@@ -78,7 +78,7 @@
 		<Navigation />
 	</svelte:fragment>
 	<!-- Router Slot -->
-	<div class="container p-10 mx-auto">
+	<div class="container p-4 mx-auto">
 		<slot />
 	</div>
 	<!-- ---- / ---- -->
