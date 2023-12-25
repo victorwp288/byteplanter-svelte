@@ -16,7 +16,11 @@ export const POST = async ({ request, cookies }) => {
 	const sessionCookie = cookies.get('__session');
 
 	const decodedClaims = await adminAuth.verifySessionCookie(sessionCookie);
+    const userId = decodedClaims.uid ?? 'Anonymous';
+	const userName = decodedClaims.name ?? 'Anonymous';
 
+	
+	
 	const response = await openai.chat.completions.create({
 		messages: [
 			{
@@ -39,8 +43,8 @@ export const POST = async ({ request, cookies }) => {
 				const docRef = await addDoc(collection(db, 'chats'), {
 					chat: completion,
 					time: new Date().toISOString(),
-					name: decodedClaims.name ?? 'Anonymous',
-					uid: decodedClaims.uid ?? 'Anonymous'
+					name: userName,
+					uid: userId,
 				});
 				console.log('Document written with ID: ', docRef.id);
 			} catch (e) {
