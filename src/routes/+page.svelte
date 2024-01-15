@@ -31,7 +31,7 @@
 			<li>{message.role} says... <Markdown source={message.content} /></li>
 		{/each}
 	</ul>
-	<div class="absolute bottom-14 flex items-center justify-center">
+	<div class=" pt-8 absolute bottom-14 flex items-center justify-center">
 		<form on:submit|preventDefault={handleSubmit} class="w-full md:w-1/2">
 			<div class="flex">
 				<input bind:value={$input} class="text-black rounded-xl" />

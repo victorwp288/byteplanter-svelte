@@ -11,23 +11,27 @@ const openai = new OpenAI({
 });
 
 export const POST = async ({ request, cookies }) => {
-	const { message } = await request.json();
+	const { messages } = await request.json();
 
 	const sessionCookie = cookies.get('__session');
 
 	const decodedClaims = await adminAuth.verifySessionCookie(sessionCookie);
 
+	console.log(messages);
 	const response = await openai.chat.completions.create({
 		messages: [
 			{
 				role: 'system',
 				content:
 					'Give mysql data that is fake but sounds real. For example, if I ask for a list of users, give me a list of users that sounds real but is fake.'
-			}
+			},
+			...messages.map((message) => ({
+				role: 'user',
+				content: message.content
+			}))
 		],
 		model: 'gpt-4-1106-preview',
-		stream: true,
-		message
+		stream: true
 	});
 
 	const stream = OpenAIStream(response, {
