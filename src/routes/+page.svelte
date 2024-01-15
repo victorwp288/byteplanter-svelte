@@ -12,6 +12,17 @@
 
 	// When the component mounts, set up an observer for auth changes
 
+	function copyToClipboard(text) {
+		navigator.clipboard.writeText(text).then(
+			function () {
+				console.log('Copying to clipboard was successful!');
+			},
+			function (err) {
+				console.error('Could not copy text: ', err);
+			}
+		);
+	}
+
 	const { messages, handleSubmit, input } = useChat();
 </script>
 
@@ -29,6 +40,11 @@
 	<ul>
 		{#each $messages as message}
 			<li>{message.role} says... <Markdown source={message.content} /></li>
+			<button
+				on:click={() => copyToClipboard(message.content)}
+				type="button"
+				class="btn variant-filled">Copy</button
+			>
 		{/each}
 	</ul>
 	<div class=" pt-8 absolute bottom-14 flex items-center justify-center">
